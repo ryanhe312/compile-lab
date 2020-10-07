@@ -18,6 +18,7 @@
 #define ILLEGAL_STRING      0xffff4
 #define INVALID_STRING      0xffff5
 #define UNTERMINATED_STRING 0xffff6
+#define UNTERMINATED_COMMENT    0xffff7
 
 
 #endif
