@@ -4,8 +4,9 @@ LEXER = ./lexer
 DIR = ../tests
 
 test: lexer
-	for file in `ls $(DIR)`; do \
-		$(LEXER) $(DIR)/$$file > $(DIR)/$$file.out; \
+	@-rm -f ../tests/*.txt
+	@for file in `ls $(DIR)`; do \
+		$(LEXER) $(DIR)/$$file > $(DIR)/$$file.txt; \
 	done
 
 lexer: lexer.c main.c
@@ -16,5 +17,5 @@ lexer.c: lexer.l
 
 clean:
 	@-rm -f lexer.c lexer
-	@-rm -f ../tests/*.out
+	@-rm -f ../tests/*.txt
 .PHONY: clean test all

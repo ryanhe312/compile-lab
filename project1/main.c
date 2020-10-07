@@ -16,7 +16,7 @@ int main(int argc,char **argv){
 
     printf("ROW\tCOL\tTYPE\t\t\t\tTOKEN/ERROR MESSAGE\n");
 
-    int index;
+    int index,cnt=0,err=0;
     while ((index=yylex())!=EOF){
         printf("%d\t%d\t",row,col-yyleng);
         switch(index){
@@ -30,6 +30,7 @@ int main(int argc,char **argv){
 
             default:     printf("error\t\t\t\t");break;
         }
+        if(error) err++; else cnt++;
         switch(error){
             case INVALID_INTEGER:       puts("INVALID INTEGER: larger than (2^31 - 1)");break;
             case ILLEGAL_REAL:          puts("ILLEGAL REAL: overly long, more than 255 in length");break;
@@ -38,12 +39,14 @@ int main(int argc,char **argv){
             case INVALID_STRING:        puts("INVALID STRING: including illegal char \\t");break;
             case UNTERMINATED_STRING:   puts("UNTERMINATED STRING: lacking of tag \"");break;
             case ILLEGAL_CHAR:          puts("ILLEGAL CHAR");break;
-            case UNTERMINATED_COMMENT:      puts("UNTERMINATED COMMENT");break;
+            case UNTERMINATED_COMMENT:  puts("UNTERMINATED COMMENT");break;
 
             default: printf("%s\n",yytext);break;
         }
         if(error == UNTERMINATED_COMMENT) break;
     }
+
+    printf("TOTAL: %d tokens, %d errors.\n",cnt,err);
 
     return 0;
 }

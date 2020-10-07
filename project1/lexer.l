@@ -20,18 +20,16 @@ STRING      \"[^\"\n\t]*\"
 
 %%
 
-\(\*    {
+"(*" {
     BEGIN(COMMENT);
-    yymore();
 }  
 
-<COMMENT>\*\) {
+<COMMENT>"*)" {
     BEGIN(INITIAL);
 }
 
 <COMMENT>\n {
     row++,col=1;
-    yymore();
 }
 
 <COMMENT><<EOF>> {
@@ -39,7 +37,6 @@ STRING      \"[^\"\n\t]*\"
 }
 
 <COMMENT>. {
-    yymore();
 }
 
 
