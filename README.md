@@ -1,5 +1,9 @@
 # 2020编译Project
 
+## 贡献者
+
+Project1 [@ryanhe312](https://github.com/ryanhe312) Project2 [@ZeayW](https://github.com/ZeayW)
+
 ### 说明
 
 所有要求请阅读[Project说明](Project说明.pdf)
